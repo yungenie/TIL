@@ -8,7 +8,16 @@
 > 출처 : https://www.sneppets.com/java/error-expected-begin_object-but-was-string-at-line-1-column-1/
 
 ### [VO] API로 받은 json데이터를 그대로 VO형태로 바꿔서 사용할 수 있는 방법    
-> 현상 : 데이터 형태가 "data" : {"a" : {"name" : "yunjin", "feel" : "happy"} "data" value값을 그대로 VO 넘길때    
-> 해결 : vo 클래스에 @SerializedName("a") private A<JsonObject> a; 선언. 이너클래스 A<J extends JsonElement> {String name, String feel}   
+> 현상 : 데이터 형태가 ``` {"data" : {"a" : {"name" : "yunjin", "feel" : "happy"}} ```  "data" value값을 그대로 VO 넘길때    
+> 해결 :    
+``` 
+@SerializedName("a") 
+private A<JsonObject> a;
+
+class A<J extends JsonElement> {
+  String name, 
+  String feel
+}
+```   
 
 출처: https://create-drop.tistory.com/18 [개발은 끝이없고]    
